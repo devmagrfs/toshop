@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineMenu } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
+import { login } from '../api/firebase';
 
 const Header = () => {
 	return (
@@ -22,7 +23,7 @@ const Header = () => {
 				<Link to='/cart'>
 					<AiOutlineShoppingCart />
 				</Link>
-				<AiOutlineLogin className='cursor-pointer' />
+				<AiOutlineLogin className='cursor-pointer' onClick={login} />
 			</nav>
 		</header>
 	);
