@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { User } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
 import { GoogleLogin, logout, onUserStateChange } from '../api/firebase';
-import User from './User';
+import Avatar from './Avatar';
 
 const Header = () => {
-	const [user, setUser] = useState<any>();
+	const [user, setUser] = useState<User | any>(null);
 
 	const handleLogin = () => {
 		GoogleLogin().then(setUser);
@@ -35,10 +36,12 @@ const Header = () => {
 				<Link to='/products/new'>
 					<BsPencilSquare />
 				</Link>
-				<Link to='/cart'>
-					<AiOutlineShoppingCart />
-				</Link>
-				{user && <User user={user} />}
+				{user && (
+					<Link to='/cart'>
+						<AiOutlineShoppingCart />
+					</Link>
+				)}
+				{user && <Avatar user={user} />}
 				{!user && <button onClick={handleLogin}>Login</button>}
 				{user && <button onClick={handleLogout}>Logout</button>}
 			</nav>
