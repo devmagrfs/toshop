@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
 import { GoogleLogin, logout, onUserStateChange } from '../api/firebase';
+import User from './User';
 
 const Header = () => {
 	const [user, setUser] = useState<any>();
@@ -37,6 +38,7 @@ const Header = () => {
 				<Link to='/cart'>
 					<AiOutlineShoppingCart />
 				</Link>
+				{user && <User user={user} />}
 				{!user && <button onClick={handleLogin}>Login</button>}
 				{user && <button onClick={handleLogout}>Logout</button>}
 			</nav>
