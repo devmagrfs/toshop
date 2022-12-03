@@ -1,13 +1,11 @@
 import React from 'react';
+import { User } from 'firebase/auth';
 
-interface UserProp {
-	user: {
-		photoURL: string;
-		displayName: string;
-	};
+interface AvatarProp {
+	user: { photoURL: string; displayName: string };
 }
 
-const User = ({ user: { photoURL, displayName } }: UserProp) => {
+const Avatar = ({ user: { photoURL, displayName } }: AvatarProp) => {
 	return (
 		<div className='flex items-center'>
 			<img className='w-10 h-10 rounded-full mr-2' src={photoURL} alt={displayName} />
@@ -16,4 +14,4 @@ const User = ({ user: { photoURL, displayName } }: UserProp) => {
 	);
 };
 
-export default User;
+export default Avatar;
