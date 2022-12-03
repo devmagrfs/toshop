@@ -12,6 +12,7 @@ import ProductDetail from './pages/ProductDetail';
 import NewProduct from './pages/NewProduct';
 import Cart from './pages/Cart';
 import Favorite from './pages/Favorite';
+import Register from './pages/Register';
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
 		errorElement: <NotFound />,
 		children: [
 			{ index: true, element: <Home /> },
+			{ path: 'register', element: <Register /> },
 			{ path: 'products', element: <AllProducts /> },
 			{ path: 'products/:id', element: <ProductDetail /> },
 			{ path: 'products/new', element: <NewProduct /> },
