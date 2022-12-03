@@ -6,6 +6,7 @@ import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
 import { GoogleLogin, logout, onUserStateChange } from '../api/firebase';
 import Avatar from './Avatar';
+import Button from './ui/Button';
 
 const Header = () => {
 	const [user, setUser] = useState<User | any>(null);
@@ -32,18 +33,20 @@ const Header = () => {
 			</Link>
 			<nav className='flex justify-end items-center text-2xl font-semibold w-full gap-3'>
 				<span className='cursor-pointer'>Menu</span>
-				<Link to='/favorite'>즐겨찾기</Link>
-				<Link to='/products/new'>
-					<BsPencilSquare />
-				</Link>
+				{user && <Link to='/favorite'>즐겨찾기</Link>}
+				{user && user.isAdmin && (
+					<Link to='/products/new'>
+						<BsPencilSquare />
+					</Link>
+				)}
 				{user && (
 					<Link to='/cart'>
 						<AiOutlineShoppingCart />
 					</Link>
 				)}
 				{user && <Avatar user={user} />}
-				{!user && <button onClick={handleLogin}>Login</button>}
-				{user && <button onClick={handleLogout}>Logout</button>}
+				{!user && <Button text={'Login'} onClick={handleLogin} />}
+				{user && <Button text={'Logout'} onClick={handleLogout} />}
 			</nav>
 		</header>
 	);
