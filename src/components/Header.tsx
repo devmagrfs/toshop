@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
+import { GoogleLogin, logout, onUserStateChange } from '../api/firebase';
 
 const Header = () => {
+	const [user, setUser] = useState<any>();
+
+	const handleLogin = () => {
+		GoogleLogin().then(setUser);
+	};
+
+	const handleLogout = () => {
+		logout().then(setUser);
+	};
+
+	useEffect(() => {
+		onUserStateChange((user: any) => {
+			setUser(user);
+		});
+	}, []);
+
 	return (
 		<header className='flex justify-between items-center w-full border-b border-zinc-600 mb-4 p-4'>
 			<Link to='/' className='flex items-center text-4xl text-brand font-bold'>
@@ -13,18 +30,15 @@ const Header = () => {
 			</Link>
 			<nav className='flex justify-end items-center text-2xl font-semibold w-full gap-3'>
 				<span className='cursor-pointer'>Menu</span>
-				<Link to='/favorite'>
-					<span>즐겨찾기</span>
-				</Link>
+				<Link to='/favorite'>즐겨찾기</Link>
 				<Link to='/products/new'>
 					<BsPencilSquare />
 				</Link>
 				<Link to='/cart'>
 					<AiOutlineShoppingCart />
 				</Link>
-				<Link to='/register'>
-					<AiOutlineLogin className='cursor-pointer' />
-				</Link>
+				{!user && <button onClick={handleLogin}>Login</button>}
+				{user && <button onClick={handleLogout}>Logout</button>}
 			</nav>
 		</header>
 	);
