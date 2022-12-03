@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@firebase/app", "npm:0.8.4"],\
             ["@tanstack/react-query", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:4.16.1"],\
             ["@tanstack/react-query-devtools", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:4.16.1"],\
             ["@testing-library/react", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:13.4.0"],\
@@ -16881,6 +16882,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["shoppingmall", "workspace:."],\
+            ["@firebase/app", "npm:0.8.4"],\
             ["@tanstack/react-query", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:4.16.1"],\
             ["@tanstack/react-query-devtools", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:4.16.1"],\
             ["@testing-library/react", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:13.4.0"],\

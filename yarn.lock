@@ -1798,7 +1798,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@firebase/app@npm:0.8.4":
+"@firebase/app@npm:0.8.4, @firebase/app@npm:^0.8.4":
   version: 0.8.4
   resolution: "@firebase/app@npm:0.8.4"
   dependencies:
@@ -12099,6 +12099,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "shoppingmall@workspace:."
   dependencies:
+    "@firebase/app": ^0.8.4
     "@tanstack/react-query": ^4.16.1
     "@tanstack/react-query-devtools": ^4.16.1
     "@testing-library/react": ^13.0.0
