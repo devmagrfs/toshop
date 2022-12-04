@@ -12,6 +12,7 @@ import ProductDetail from './pages/ProductDetail';
 import NewProduct from './pages/NewProduct';
 import Cart from './pages/Cart';
 import Favorite from './pages/Favorite';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 const queryClient = new QueryClient();
 
@@ -24,9 +25,30 @@ const router = createBrowserRouter([
 			{ index: true, element: <Home /> },
 			{ path: 'products', element: <AllProducts /> },
 			{ path: 'products/:id', element: <ProductDetail /> },
-			{ path: 'products/new', element: <NewProduct /> },
-			{ path: 'cart', element: <Cart /> },
-			{ path: 'favorite', element: <Favorite /> },
+			{
+				path: 'products/new',
+				element: (
+					<ProtectedRoute requireAdmin>
+						<NewProduct />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: 'cart',
+				element: (
+					<ProtectedRoute>
+						<Cart />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: 'favorite',
+				element: (
+					<ProtectedRoute>
+						<Favorite />
+					</ProtectedRoute>
+				),
+			},
 		],
 	},
 ]);
