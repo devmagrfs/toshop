@@ -1,13 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
+import { AuthContextProvider } from '../context/AuthContext';
 
 const Layout = () => {
 	return (
-		<>
+		<AuthContextProvider>
 			<Header />
 			<Outlet />
-		</>
+		</AuthContextProvider>
 	);
 };
 

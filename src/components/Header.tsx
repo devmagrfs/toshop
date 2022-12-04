@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { User } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { BsPencilSquare } from 'react-icons/bs';
 import { ReactComponent as Logo } from '../assets/ToShopLogo.svg';
-import { GoogleLogin, logout, onUserStateChange } from '../api/firebase';
+import { GoogleLogin } from '../api/firebase';
 import Avatar from './Avatar';
 import Button from './ui/Button';
+import { useAuthContext } from '../context/AuthContext';
 
 const Header = () => {
-	const [user, setUser] = useState<User | any>(null);
+	const { user, login, logout } = useAuthContext();
 
 	const handleLogin = () => {
-		GoogleLogin().then(setUser);
+		GoogleLogin();
 	};
 
 	const handleLogout = () => {
-		logout().then(setUser);
+		logout();
 	};
-
-	useEffect(() => {
-		onUserStateChange((user: any) => {
-			setUser(user);
-		});
-	}, []);
 
 	return (
 		<header className='flex justify-between items-center w-full border-b border-zinc-600 mb-4 p-4'>
