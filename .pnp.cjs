@@ -50,6 +50,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:5.0.1"],\
             ["tailwindcss", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:3.2.4"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
+            ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -16904,6 +16905,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:5.0.1"],\
             ["tailwindcss", "virtual:430e013d10155a98226a83cfbb3a3a63d8749de511fde1938c4bb4488346528aba90cca169a0cb0b409f185a7c07caadd6859f9d350233ac16ce6906a3e91870#npm:3.2.4"],\
             ["typescript", "patch:typescript@npm%3A4.9.3#~builtin<compat/typescript>::version=4.9.3&hash=d73830"],\
+            ["uuid", "npm:9.0.0"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -18182,6 +18184,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-5575a8a75c.zip/node_modules/uuid/",\
           "packageDependencies": [\
             ["uuid", "npm:8.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/uuid-npm-9.0.0-46c41e3e43-8dd2c83c43.zip/node_modules/uuid/",\
+          "packageDependencies": [\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
