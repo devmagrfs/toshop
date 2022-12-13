@@ -43,12 +43,12 @@ const NewProduct = () => {
 	};
 
 	return (
-		<section>
-			<h2>새 제품 등록</h2>
-			{success && <p>이미지 등록 성공!</p>}
-			{file && <img src={URL.createObjectURL(file)} alt='local file' />}
-			<form onSubmit={handleSubmit}>
-				<input type='file' accept='image/*' name='file' required onChange={handleChange} />
+		<section className='w-full text-center'>
+			<h2 className='text-2xl font-bold my-4'>새 제품 등록</h2>
+			{success && <p className='my-2'>이미지 등록 성공!</p>}
+			{file && <img className='w-96 mx-auto mb-2' src={URL.createObjectURL(file)} alt='local file' />}
+			<form className='flex flex-col px-2' onSubmit={handleSubmit}>
+				<input className='p-4 outline-none border border-gray-300 my-1' type='file' accept='image/*' name='file' required onChange={handleChange} />
 				<input type='text' name='title' value={product?.title ?? ''} placeholder='제품명' required onChange={handleChange} />
 				<input type='number' name='price' value={product?.price ?? ''} placeholder='가격' required onChange={handleChange} />
 				<input type='text' name='category' value={product?.category ?? ''} placeholder='카테고리' required onChange={handleChange} />
