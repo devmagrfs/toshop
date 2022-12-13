@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addNewProduct } from '../api/firebase';
 import { uploadImage } from '../api/uploader';
 import Button from '../components/ui/Button';
 
@@ -13,12 +14,23 @@ interface ProductProp {
 const NewProduct = () => {
 	const [product, setProduct] = useState<ProductProp | undefined>(undefined);
 	const [file, setFile] = useState<File | null>();
+	const [isUploading, setIsUploading] = useState<boolean>(false);
+	const [success, setSuccess] = useState<string | null>(null);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		uploadImage(file).then((url) => {
-			console.log(url);
-		});
+		setIsUploading(true);
+		uploadImage(file) //
+			.then((url) => {
+				addNewProduct(product, url) //
+					.then(() => {
+						setSuccess('성공적으로 제품을 등록했습니다.');
+						setTimeout(() => {
+							setSuccess(null);
+						}, 4000);
+					});
+			})
+			.finally(() => setIsUploading(false));
 	};
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +44,8 @@ const NewProduct = () => {
 
 	return (
 		<section>
+			<h2>새 제품 등록</h2>
+			{success && <p>이미지 등록 성공!</p>}
 			{file && <img src={URL.createObjectURL(file)} alt='local file' />}
 			<form onSubmit={handleSubmit}>
 				<input type='file' accept='image/*' name='file' required onChange={handleChange} />
@@ -40,7 +54,7 @@ const NewProduct = () => {
 				<input type='text' name='category' value={product?.category ?? ''} placeholder='카테고리' required onChange={handleChange} />
 				<input type='text' name='describe' value={product?.describe ?? ''} placeholder='제품 설명' required onChange={handleChange} />
 				<input type='text' name='options' value={product?.options ?? ''} placeholder='옵션들(콤마(,)로 구분하기)' required onChange={handleChange} />
-				<Button text={'제품 등록'} />
+				<Button text={isUploading ? '업로드중...' : '제품 등록'} disabled={isUploading} />
 			</form>
 		</section>
 	);
